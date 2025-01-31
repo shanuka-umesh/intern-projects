@@ -1,19 +1,27 @@
 package org.example;
 
+import java.util.Random;
+
 public class Main {
 
-    static int canvasHeight = 20;
-    static int canvasWidth = 20;
+    static int canvasHeight = 40;
+    static int canvasWidth = 40;
 
     public static void main(String[] args) {
 
         Canvas mainCanvas = new Canvas();
         char[][] canvas = mainCanvas.createCanvas(canvasHeight, canvasWidth);
 
-        Shape shape = new Shape(canvas,canvasHeight,canvasWidth);
+      //  Shape shape = new Shape(canvas,canvasHeight,canvasWidth);
+        Trunk trunk = new Trunk(canvas);
 
-          shape.Createsquare(canvas,2,5,10);
-          shape.CreateTriangle(canvas,5,5,4);
+      //    shape.Createsquare(canvas,2,5,10);
+      //    shape.CreateTriangle(canvas,5,5,4);
+
+          trunk.CreateTrunkBase(24,18,14,2);
+          trunk.CreateTrunkOutline();
+          trunk.createLeftBranch(28,17,5);
+        trunk.createLeftBranch(32,17,3);
 
         mainCanvas.printCanvas(canvas);
 
@@ -124,7 +132,7 @@ class Root{
         this.canvas=canvas;
     }
 
-    public void CreateRoot(int startPositionX, int startPositionY)
+    public void CreateRootBase(int startPositionX, int startPositionY)
     {
 
     }
@@ -150,19 +158,67 @@ class Leave{
 class Trunk{
 
     char[][] canvas;
+    int trunkBaseStartX , trunkBaseStartY, trunkBaseSizeX,trunkBaseSizeY;
 
     public Trunk(char[][] canvas)
     {
         this.canvas=canvas;
     }
 
-    public void CreateTrunkBase(int startPositionX, int startPositionY)
+    public void CreateTrunkBase(int startPositionX, int startPositionY,int sizeX, int sizeY)
     {
+        trunkBaseStartY=startPositionY;
+        trunkBaseStartX=startPositionX;
+        trunkBaseSizeX=sizeX;
+        trunkBaseSizeY=sizeY;
 
+        for(int i=startPositionX ; i<startPositionX+sizeX ; i++)
+        {
+            for(int j=startPositionY ; j<startPositionY+sizeY ; j++)
+            {
+                canvas[i][j]=' ';
+            }
+        }
     }
 
-    public void CreateTrunkOutline(int startPositionX, int startPositionY)
-    {
+    public void CreateTrunkOutline() {
 
+        Random r = new Random();
+        String characters = "/\\{}";
+
+        for (int i = trunkBaseStartX; i < trunkBaseStartX + trunkBaseSizeX; i++)
+        {
+            if (trunkBaseStartX > 0)
+            {
+                canvas[i][trunkBaseStartY - 1] = characters.charAt(r.nextInt(characters.length()));
+            }
+
+            if (trunkBaseStartY + trunkBaseSizeY < canvas[0].length)
+            {
+                canvas[i][trunkBaseStartY + trunkBaseSizeY] = characters.charAt(r.nextInt(characters.length()));
+            }
+        }
     }
+
+    public void createLeftBranch(int branchStartX, int branchStartY, int branchSizeY)
+    {
+        for (int i = 0; i < branchSizeY; i++)
+        {
+            int x = branchStartX - i;
+            int y = branchStartY - i;
+
+            if (x >= 0 && y >= 0)
+            {
+                canvas[x][y] = '\\';
+            }
+
+            if (x - 1 >= 0 && y >= 0)
+            {
+                canvas[x - 1][y] = '\\';
+            }
+        }
+    }
+
+
+
 }

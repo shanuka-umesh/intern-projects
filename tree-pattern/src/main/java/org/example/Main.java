@@ -1,25 +1,29 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    static int canvasHeight=20;
-    static int canvasWidth=20;
+    static int canvasHeight = 20;
+    static int canvasWidth = 20;
 
     public static void main(String[] args) {
 
-        char[][] canvas = createCanvas(canvasHeight,canvasWidth);
+        Canvas mainCanvas = new Canvas();
+        char[][] canvas = mainCanvas.createCanvas(canvasHeight, canvasWidth);
 
-         Createsquare(canvas,2,5,10);
+        Shape shape = new Shape(canvas,canvasHeight,canvasWidth);
 
-        CreateTriangle(canvas,5,5,4);
+          shape.Createsquare(canvas,2,5,10);
+          shape.CreateTriangle(canvas,5,5,4);
 
-        printCanvas(canvas);
+        mainCanvas.printCanvas(canvas);
 
     }
 
-    public static  char[][] createCanvas(int height, int width)
+}
+
+class Canvas{
+
+    public char[][] createCanvas(int height, int width)
     {
         char[][] canvas = new char[height][width];
 
@@ -33,10 +37,10 @@ public class Main {
         return canvas;
     }
 
-    public static void printCanvas(char[][] canvas)
+    public void printCanvas(char[][] canvas)
     {
 
-      //  System.out.println(canvas.length);
+        //  System.out.println(canvas.length);
 
         for (int i = 0; i < canvas.length; i++)
         {
@@ -56,7 +60,40 @@ public class Main {
 
     }
 
-    public static void Createsquare(char[][] canvas , int startPositionX , int startPositionY,int size)
+}
+
+class Shape{
+
+     int canvasWidth, canvasHeight;
+    char[][] canvas;
+
+    public Shape(char[][] canvas,int canvasHeight, int canvasWidth)
+    {
+        this.canvasHeight=canvasHeight;
+        this.canvasWidth=canvasWidth;
+        this.canvas=canvas;
+    }
+
+    public void CreateTriangle(char[][] canvas,int startPositionX, int startPositionY, int size)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            int spaces = size - i - 1; // Leading spaces for centering
+            int stars = 2 * i + 1; // Number of stars in current row
+
+            for (int j = 0; j < spaces; j++)
+            {
+                canvas[startPositionX + i][startPositionY + j] = ' ';
+            }
+
+            for (int j = 0; j < stars; j++)
+            {
+                canvas[startPositionX + i][startPositionY + spaces + j] = '*';
+            }
+        }
+    }
+
+    public void Createsquare(char[][] canvas , int startPositionX , int startPositionY,int size)
     {
         if(canvasHeight>startPositionX+size && canvasWidth > startPositionY+size )
         {
@@ -76,24 +113,56 @@ public class Main {
 
     }
 
-    public static void CreateTriangle(char[][] canvas,int startPositionX, int startPositionY, int size)
+}
+
+class Root{
+
+    char[][] canvas;
+
+    public Root(char[][] canvas)
     {
-        for (int i = 0; i < size; i++)
-        {
-            int spaces = size - i - 1; // Leading spaces for centering
-            int stars = 2 * i + 1; // Number of stars in current row
-
-            for (int j = 0; j < spaces; j++)
-            {
-                canvas[startPositionX + i][startPositionY + j] = ' ';
-            }
-
-            for (int j = 0; j < stars; j++)
-            {
-                canvas[startPositionX + i][startPositionY + spaces + j] = '*';
-            }
-
-        }
+        this.canvas=canvas;
     }
 
+    public void CreateRoot(int startPositionX, int startPositionY)
+    {
+
+    }
+
+}
+
+class Leave{
+
+    char[][] canvas;
+
+    public Leave(char[][] canvas)
+    {
+        this.canvas=canvas;
+    }
+
+    public void CreateLeave(int startPositionX, int startPositionY)
+    {
+
+    }
+
+}
+
+class Trunk{
+
+    char[][] canvas;
+
+    public Trunk(char[][] canvas)
+    {
+        this.canvas=canvas;
+    }
+
+    public void CreateTrunkBase(int startPositionX, int startPositionY)
+    {
+
+    }
+
+    public void CreateTrunkOutline(int startPositionX, int startPositionY)
+    {
+
+    }
 }

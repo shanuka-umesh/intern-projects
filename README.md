@@ -1,6 +1,6 @@
 # Internship Program Projects  
 
-This repository contains projects developed as part of an internship program.  
+This repository contains projects developed as part of internship program.  
 
 ## Tech Stack  
 - **Programming Language:** Java  

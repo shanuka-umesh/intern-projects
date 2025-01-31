@@ -92,6 +92,7 @@ public class Main {
             {
                 canvas[startPositionX + i][startPositionY + spaces + j] = '*';
             }
+
         }
     }
 

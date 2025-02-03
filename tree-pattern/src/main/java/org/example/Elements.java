@@ -122,23 +122,57 @@ class Trunk {
 class Leave {
     char[][] canvas;
 
-    public Leave(char[][] canvas)
-    {
+    public Leave(char[][] canvas) {
         this.canvas = canvas;
     }
 
-    public void CreateLeave(int startPositionX, int startPositionY,String size)
-    {
-        if(size=="large")
-        {
+    public void createLeaf(int startPositionX, int startPositionY, String size) {
 
+        int leafHeight;
+        int leafWidth;
+
+        switch (size.toLowerCase()) {
+            case "small":
+                leafHeight = 3;
+                leafWidth = 3;
+                break;
+            case "medium":
+                leafHeight = 5;
+                leafWidth = 5;
+                break;
+            case "large":
+                leafHeight = 7;
+                leafWidth = 7;
+                break;
+            default:
+                leafHeight = 7;
+                leafWidth = 7;
         }
-        else
-        {
 
+        for (int i = 0; i < leafHeight; i++)
+        {
+            for (int j = 0; j < leafWidth; j++)
+            {
+                int centerX = leafWidth / 2;
+                int centerY = leafHeight / 2;
+
+
+                if ((Math.pow(i - centerY, 2) / Math.pow(centerY, 2)) + (Math.pow(j - centerX, 2) / Math.pow(centerX, 2)) <= 1)
+                {
+                    int x = startPositionX + i;
+                    int y = startPositionY + j;
+
+                    if (x >= 0 && x < canvas.length && y >= 0 && y < canvas[0].length)
+                    {
+                        canvas[x][y] = '*'; // Leaf character
+                    }
+                }
+            }
         }
     }
 }
+
+
 
 class Root {
 

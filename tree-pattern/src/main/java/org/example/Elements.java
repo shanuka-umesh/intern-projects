@@ -54,6 +54,7 @@ class Trunk {
         trunkBaseStartX = startPositionX;
         trunkBaseSizeX = sizeX;
         trunkBaseSizeY = sizeY;
+
         for (int i = startPositionX; i < startPositionX + sizeX; i++)
         {
             for (int j = startPositionY; j < startPositionY + sizeY; j++)
@@ -183,7 +184,7 @@ class Root {
         this.canvas=canvas;
     }
 
-    public void addRoot()
+    public void addRoot(int startPositionX, int startPositionY)
     {
 
     }

@@ -6,7 +6,7 @@ public class Tree extends JFrame {
 
 
     private int leafCount=150;
-    private Trunk trunk = new Trunk(80,200);
+    private Trunk trunk = new Trunk(80,300);
     private Leaf leaves =  new Leaf(leafCount);
 
 

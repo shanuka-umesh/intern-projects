@@ -29,9 +29,16 @@ public class Trunk extends JPanel {
         g2d.setColor(new Color(102, 51, 0));
 
         drawTrunk(g2d, trunkWidth, trunkHeight, xStart, yStart);
+        drawRoot(g2d,getWidth(),getHeight()/5,0,getWidth());
     }
 
     private void drawTrunk(Graphics g2d, int trunkWidth, int trunkHeight, int xStart, int yStart) {
         g2d.fillRect(xStart, yStart, trunkWidth, trunkHeight);
+    }
+
+    private  void drawRoot(Graphics g2d, int rootWidth, int rootHeight, int xStart, int yStart)
+    {
+        g2d.fillRect(xStart, yStart, trunkWidth, trunkHeight);
+        g2d.setColor(Color.green);
     }
 }

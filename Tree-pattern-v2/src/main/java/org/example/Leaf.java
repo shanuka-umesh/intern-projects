@@ -9,10 +9,13 @@ public class Leaf extends JPanel {
     private final Random random = new Random();
     private final int leafCount;
 
-    public Leaf(int leafCount) {
+    public Leaf(int leafCount)
+    {
+
         this.leafCount = leafCount;
-        setPreferredSize(new Dimension(700, 700));
-        setBackground(Color.lightGray);
+        setOpaque(false);
+        //setPreferredSize(new Dimension(700, 700));
+        setBackground(Color.black);
     }
 
     @Override
@@ -46,15 +49,15 @@ public class Leaf extends JPanel {
                 new Color(61, 238, 61),
                 new Color(50, 205, 50),
                 new Color(204, 66, 23),
-                new Color(108, 196, 57)
-
+                new Color(108, 196, 57),
+                new Color(245, 215, 75)
         };
 
         for (int i = 0; i < leafCount; i++)
         {
             int xStartingPosition = random.nextInt(getWidth());
             int yStartingPosition = random.nextInt(getHeight()/2);
-            int width = random.nextInt(20) + 10;
+            int width = random.nextInt(20) +5;
             int height = width * 2;
 
 

@@ -9,7 +9,7 @@ public class Trunk extends JPanel {
     public Trunk(int trunkWidth, int trunkHeight)
     {
         //setOpaque(false);
-        setBackground(Color.gray);
+
 
         this.trunkHeight = trunkHeight;
         this.trunkWidth = trunkWidth;

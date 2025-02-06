@@ -5,7 +5,9 @@ import java.awt.*;
 
 public class Tree extends JFrame {
 
-    private int leafCount = 150;
+    private int roundleafCount = 200;
+    private int overleafCount = 150;
+
     private Color[] leafColors = {
             new Color(61, 238, 61),
             new Color(50, 205, 50),
@@ -30,8 +32,8 @@ public class Tree extends JFrame {
 
     private void addTrunk()
     {
-        Trunk trunk = new Trunk(80, 300);
-        trunk.setBounds(250, 450, 200, 200);
+        Trunk trunk = new Trunk(80, 400);
+        trunk.setBounds(250, 450, 200, 400);
         add(trunk);
     }
 
@@ -43,14 +45,16 @@ public class Tree extends JFrame {
 
     private void addOverlLeaves()
     {
-        for (int i = 0; i < leafCount / 3; i++) {
-            int x = (int) (Math.random() * getWidth());
-            int y = (int) (Math.random() * getHeight() / 2);
-            int width = (int) (Math.random() * 20) + 5;
+        for (int i = 0; i < overleafCount / 3; i++)
+        {
+            int xPosition = (int) (Math.random() * getWidth());
+            int yPosition = (int) (Math.random() * getHeight() / 2);
+            int width = (int) (Math.random() * 20) + 10;
             int height = width * 2;
+
             Color leafColor = leafColors[(int) (Math.random() * leafColors.length)];
 
-            OverlLeaf leaf = new OverlLeaf(x, y, width, height, leafColor);
+            OverlLeaf leaf = new OverlLeaf(xPosition, yPosition, width, height, leafColor);
             leaf.setBounds(0, 0, 700, 700);
             add(leaf);
         }
@@ -58,16 +62,16 @@ public class Tree extends JFrame {
 
 
 
-
     private void addRoundLeaves()
     {
-        for (int i = 0; i < leafCount / 3; i++) {
-            int x = (int) (Math.random() * getWidth());
-            int y = (int) (Math.random() * getHeight() / 2);
-            int diameter = (int) (Math.random() * 20) + 5;
+        for (int i = 0; i < roundleafCount / 3; i++)
+        {
+            int xPosition = (int) (Math.random() * getWidth());
+            int yPosition = (int) (Math.random() * getHeight() / 2);
+            int diameter = (int) (Math.random() * 20) + 15;
             Color leafColor = leafColors[(int) (Math.random() * leafColors.length)];
 
-            RoundLeaf leaf = new RoundLeaf(x, y, diameter, leafColor);
+            RoundLeaf leaf = new RoundLeaf(xPosition, yPosition, diameter, leafColor);
             leaf.setBounds(0, 0, 700, 700);
             add(leaf);
         }

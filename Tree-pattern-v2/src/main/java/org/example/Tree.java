@@ -7,16 +7,16 @@ public class Tree extends JFrame {
 
     private int leafCount=150;
     private Trunk trunk = new Trunk(80,300);
-    private Leaf leaves =  new Leaf(leafCount);
+    private  OverlLeaf overlLeaf = new OverlLeaf(leafCount);
 
 
     public Tree() {
         super("Tree pattern version 2");
 
-        leaves.setBounds(0, 0, 700, 700);
+        overlLeaf.setBounds(0, 0, 700, 700);
         trunk.setBounds(0, 0, 200, 200);
 
-        add(leaves);
+        add(overlLeaf);
         add(trunk);
 
         setSize(700, 700);
@@ -26,5 +26,6 @@ public class Tree extends JFrame {
 
     public void showTree() {
         setVisible(true);
+
     }
 }

@@ -2,11 +2,16 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class Tree extends JFrame {
 
-    private int roundleafCount = 400;
-    private int overleafCount = 300;
+    private int roundleafCount = 5000;
+    private int overleafCount = 500;
+
+    private Color branchColor = new Color(100, 50, 20); // Dark brown
+
+    Random random = new Random();
 
     private Color[] leafColors = {
             new Color(61, 238, 61),
@@ -17,7 +22,6 @@ public class Tree extends JFrame {
     };
 
 
-
     public Tree() {
         super("Tree pattern version 2");
 
@@ -26,6 +30,7 @@ public class Tree extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        addBranches();
         addLeaves();
         addTrunk();
 
@@ -46,17 +51,26 @@ public class Tree extends JFrame {
 
     private void addOverlLeaves()
     {
-        for (int i = 0; i < overleafCount / 3; i++)
+        int centerX = 350;
+        int centerY = 75;
+        int maxRadius = 400;
+
+
+        for (int i = 0; i < overleafCount; i++)
         {
-            int xPosition = (int) (Math.random() * getWidth());
-            int yPosition = (int) (Math.random() * getHeight() / 2);
-            int width = (int) (Math.random() * 20) + 20;
+            double angle = 2 * Math.PI * random.nextDouble();
+            double radius = maxRadius * Math.sqrt(random.nextDouble());
+
+            int xPosition = (int) (centerX + radius * Math.cos(angle));
+            int yPosition = (int) (centerY + radius * Math.sin(angle));
+
+            int width = random.nextInt(20) + 20;
             int height = width * 2;
 
-            Color leafColor = leafColors[(int) (Math.random() * leafColors.length)];
+            Color leafColor = leafColors[random.nextInt(leafColors.length)];
 
             OverlLeaf leaf = new OverlLeaf(xPosition, yPosition, width, height, leafColor);
-            leaf.setBounds(20, 20, 600, 600);
+            leaf.setBounds(0, 0, 700, 700);
             add(leaf);
         }
     }
@@ -64,18 +78,42 @@ public class Tree extends JFrame {
 
     private void addRoundLeaves()
     {
+
+        int centerX = 350;
+        int centerY = 75;
+        int maxRadius = 400;
+
+
         for (int i = 0; i < roundleafCount / 3; i++)
         {
-            int xPosition = (int) (Math.random() * getWidth());
-            int yPosition = (int) (Math.random() * getHeight() / 2);
+            double angle = 2 * Math.PI * random.nextDouble();
+            double radius = maxRadius * Math.sqrt(random.nextDouble());
+
+            int xPosition = (int) (centerX + radius * Math.cos(angle));
+            int yPosition = (int) (centerY + radius * Math.sin(angle));
+
+            int width = random.nextInt(20) + 20;
+
+
             int diameter = (int) (Math.random() * 20) + 15;
+
             Color leafColor = leafColors[(int) (Math.random() * leafColors.length)];
 
             RoundLeaf leaf = new RoundLeaf(xPosition, yPosition, diameter, leafColor);
-            leaf.setBounds(20, 20, 600, 600);
+            leaf.setBounds(0, 0, 700, 700);
             add(leaf);
         }
     }
+
+    private void addBranches()
+    {
+        Branch branch = new Branch(50, 50, 50,25,Color.BLUE);
+        branch.setBounds(100, 100, 100, 100);
+        add(branch);
+    }
+
+
+
 
     public void showTree() {
         setVisible(true);

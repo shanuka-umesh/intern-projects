@@ -41,4 +41,6 @@ public class Trunk extends JPanel {
         g2d.fillRect(xStart, yStart, trunkWidth, trunkHeight);
         g2d.setColor(Color.green);
     }
+
+
 }

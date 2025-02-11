@@ -9,7 +9,7 @@ public class Trunk extends JPanel {
     public Trunk(int trunkWidth, int trunkHeight)
     {
         //setOpaque(false);
-        setBackground(Color.gray);
+
 
         this.trunkHeight = trunkHeight;
         this.trunkWidth = trunkWidth;
@@ -41,4 +41,6 @@ public class Trunk extends JPanel {
         g2d.fillRect(xStart, yStart, trunkWidth, trunkHeight);
         g2d.setColor(Color.green);
     }
+
+
 }

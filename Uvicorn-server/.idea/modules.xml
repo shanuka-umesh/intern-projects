@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/uvicornServer.iml" filepath="$PROJECT_DIR$/uvicornServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Uvicorn-server.iml" filepath="$PROJECT_DIR$/Uvicorn-server.iml" />
     </modules>
   </component>
 </project>
